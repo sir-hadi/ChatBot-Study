@@ -73,7 +73,7 @@ hidden_size = 8
 output_size = len(tags)
 input_size = len(X_train[0])  # or len(all_words)
 learning_rate = 0.001
-nums_epochs = 1000
+nums_epochs = 1500
 
 # Dataset object
 '''
@@ -135,3 +135,17 @@ for epoch in range(nums_epochs):
         print(f'epoch {epoch+1}/{nums_epochs}, loss={loss.item():.4f}')
 
 print(f'final loss, loss={loss.item():.4f}')
+
+data = {
+    "model_state": model.state_dict(),
+    "input_size": input_size,
+    "output_size": output_size,
+    "hidden_size": hidden_size,
+    "all_words": all_words,
+    "tags": tags
+}
+
+MODEL_FILENAME = "data.pth"
+torch.save(data,MODEL_FILENAME)
+
+print(f'Training completed, file saved to {MODEL_FILENAME}')
