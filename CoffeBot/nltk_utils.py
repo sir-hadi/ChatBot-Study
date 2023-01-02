@@ -15,7 +15,7 @@ def stem(word):
     return stemmer.stem(word.lower())
 
 def bags_of_words(tokenized_sentence, all_words):
-    # ? the order of whne to stem? should we make all word into stem words too?
+    # ? the order of when to stem? should we make all word into stem words too?
     tokenized_sentence = [stem(word) for word in tokenized_sentence]
 
     bag = np.zeros(len(all_words), dtype=np.float32)
